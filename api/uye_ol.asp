@@ -1,6 +1,4 @@
-<!--#include virtual="/_config/veritabani.inc"-->
-<!--#include virtual="/_config/json.inc"-->
-<!--#include virtual="/_config/security.inc"-->
+<!--#include file="../_config/veritabani.inc"--><!--#include file="../_config/json.inc"--><!--#include file="../_config/security.inc"-->
 <%
 Response.CodePage = 65001
 Response.CharSet = "utf-8"
@@ -8,14 +6,7 @@ Response.ContentType = "application/json"
 
 On Error Resume Next
 
-' CSRF Kontrolü (Hata varsa JSON dön)
-' CsrfValidate()
-If Err.Number <> 0 Then
-    Response.Clear
-    Response.Status = "200 OK"
-    Response.Write "{""ok"":false,""message"":""CSRF Hatasi: " & Replace(Err.Description, """", "'") & """}"
-    Response.End
-End If
+' CsrfValidate() ' Gecici olarak iptal
 
 Dim conn, cmd
 Set conn = DbConn()
@@ -53,7 +44,7 @@ cmd.Execute
 
 If Err.Number <> 0 Then
     Response.Clear
-    Response.Status = "200 OK" ' 500 yerine 200 dön ki JS hatayi okuyabilsin
+    Response.Status = "200 OK"
     Response.Write "{""ok"":false,""message"":""SQL Hatasi (" & Err.Number & "): " & Replace(Err.Description, """", "'") & """}"
     Response.End
 End If

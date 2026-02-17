@@ -1,8 +1,4 @@
-<!--#include file="../_config/veritabani.inc"-->
-<!--#include file="../_config/json.inc"-->
-<!--#include file="../_config/security.inc"-->
-
-
+<!--#include file="../_config/veritabani.inc"--><!--#include file="../_config/json.inc"--><!--#include file="../_config/security.inc"-->
 <%
 ' CsrfValidate() ' Gecici olarak iptal
 On Error Resume Next

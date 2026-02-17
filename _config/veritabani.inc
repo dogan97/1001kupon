@@ -1,16 +1,13 @@
 <%
-' --- BAGLANTI AYARLARI ---
-' Sunucu: 127.0.0.1 (Localhost IP)
-' Port: 1433 (Standart SQL Portu)
-' Kullanici: boserver
-' Sifre: Bora123???
+' --- BAGLANTI AYARLARI (LOCALHOST) ---
+' Kullanici: sa
+' Sifre: 123456aA
 
-Const DB_CONN_STR = "Provider=SQLOLEDB;Data Source=SRVMNJR25\SQLEXPRESS;Initial Catalog=KUPON1001;User ID=boserver;Password=Bora123???;"
+Const DB_CONN_STR = "Provider=MSOLEDBSQL;Server=.;Database=KUPON1001;UID=sa;PWD=123456aA;TrustServerCertificate=Yes;"
 
 ' --- SITE AYARLARI ---
-' Alt klasorde calisiyorsa buraya klasor adini yazin (Orn: "/dogan-1001kupon")
-' Ana dizinde calisiyorsa bos birakin ("")
-Const ROOT_PATH = "/dogan-1001kupon"
+' Localhost (Kok Dizin) icin bos birakin:
+Const ROOT_PATH = "" 
 
 Function DbConn()
   Dim c: Set c = Server.CreateObject("ADODB.Connection")

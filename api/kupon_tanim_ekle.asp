@@ -1,6 +1,4 @@
-<!--#include virtual="/_config/veritabani.inc"-->
-<!--#include virtual="/_config/json.inc"-->
-<!--#include virtual="/_config/security.inc"-->
+<!--#include file="../_config/veritabani.inc"--><!--#include file="../_config/json.inc"--><!--#include file="../_config/security.inc"-->
 <%
 Response.CodePage = 65001
 Response.CharSet = "utf-8"
