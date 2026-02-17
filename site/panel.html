@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetim Paneli | 1001Kupon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <div class="border-end bg-dark text-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom border-secondary">
+                <i class="bi bi-ticket-perforated-fill me-2"></i>1001KUPON
+            </div>
+            <div class="list-group list-group-flush mt-3">
+                <a class="sidebar-link active" href="#" onclick="showSection('dashboard')"><i class="bi bi-speedometer2 me-2"></i> Özet Durum</a>
+                <a class="sidebar-link" href="#" onclick="showSection('generate')"><i class="bi bi-magic me-2"></i> Kupon Oluştur</a>
+                <a class="sidebar-link" href="#" onclick="showSection('redeem')"><i class="bi bi-qr-code-scan me-2"></i> Kupon Bozdur</a>
+                <a class="sidebar-link" href="#" onclick="showSection('list')"><i class="bi bi-list-ul me-2"></i> Tüm Kuponlar</a>
+                <a class="sidebar-link" href="#" onclick="showSection('payment')"><i class="bi bi-credit-card me-2"></i> Bakiye Yükle</a>
+            </div>
+            <div class="mt-auto p-3 border-top border-secondary">
+                <div class="d-flex align-items-center text-white-50 small">
+                    <i class="bi bi-person-circle fs-4 me-2"></i>
+                    <div>
+                        <div>ABC Şirketi</div>
+                        <div>Kalan Kredi: <strong>850</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-content-wrapper">
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary btn-sm" id="sidebarToggle"><i class="bi bi-list"></i> Menü</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                    Hesabım
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end shadow">
+                                    <li><a class="dropdown-item" href="#">Profil Ayarları</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="index.html">Çıkış Yap</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid p-4">
+                
+                <div id="dashboard" class="content-section">
+                    <h3 class="fw-bold mb-4">Hoşgeldiniz, ABC Şirketi</h3>
+                    
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-3">
+                            <div class="card stats-card shadow-sm h-100 py-2">
+                                <div class="card-body">
+                                    <div class="text-xs fw-bold text-primary text-uppercase mb-1">Toplam Üretilen</div>
+                                    <div class="h3 mb-0 fw-bold text-gray-800">5,000</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card stats-card shadow-sm h-100 py-2" style="border-left-color: #10b981;">
+                                <div class="card-body">
+                                    <div class="text-xs fw-bold text-success text-uppercase mb-1">Kullanılan (Redeemed)</div>
+                                    <div class="h3 mb-0 fw-bold text-gray-800">1,250</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card stats-card shadow-sm h-100 py-2" style="border-left-color: #f59e0b;">
+                                <div class="card-body">
+                                    <div class="text-xs fw-bold text-warning text-uppercase mb-1">Bekleyen</div>
+                                    <div class="h3 mb-0 fw-bold text-gray-800">3,750</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card stats-card shadow-sm h-100 py-2" style="border-left-color: #ef4444;">
+                                <div class="card-body">
+                                    <div class="text-xs fw-bold text-danger text-uppercase mb-1">Süresi Dolan</div>
+                                    <div class="h3 mb-0 fw-bold text-gray-800">45</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header py-3 bg-white">
+                            <h6 class="m-0 fw-bold text-primary">Kupon Kullanım Grafiği (Son 30 Gün)</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="generate" class="content-section d-none">
+                    <h3 class="fw-bold mb-4">Toplu Kupon Oluştur</h3>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Kampanya Adı</label>
+                                        <input type="text" class="form-control" placeholder="Örn: Yaz İndirimi 2026">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Üretilecek Adet</label>
+                                        <input type="number" class="form-control" placeholder="Maks: 850 (Krediniz)">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Kupon Tutarı (TL)</label>
+                                        <input type="number" class="form-control" placeholder="100">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Alt Harcama Limiti</label>
+                                        <input type="number" class="form-control" placeholder="500">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Son Geçerlilik</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle me-1"></i> Bu işlem bakiyenizden <strong>adet sayısı kadar</strong> kredi düşecektir.
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-cpu me-2"></i>Kodları Üret</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="redeem" class="content-section d-none">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                            <h3 class="fw-bold mb-4">Kupon Sorgula & Bozdur</h3>
+                            <div class="card shadow p-4">
+                                <div class="mb-4">
+                                    <i class="bi bi-qr-code-scan display-1 text-muted"></i>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Kupon Kodunu Girin (Örn: XYZ-123)">
+                                    <button class="btn btn-primary" type="button">Sorgula</button>
+                                </div>
+                                <div id="coupon-result" class="d-none mt-3">
+                                    <div class="alert alert-success text-start">
+                                        <h5 class="alert-heading"><i class="bi bi-check-circle-fill"></i> Kupon Geçerli!</h5>
+                                        <p class="mb-0">Tutar: <strong>100 TL</strong></p>
+                                        <p class="mb-0">Kampanya: Yaz İndirimi</p>
+                                        <hr>
+                                        <button class="btn btn-success w-100">Kullanımı Onayla (Öldür)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="list" class="content-section d-none">
+                    <h3 class="fw-bold mb-4">Tüm Kuponlar</h3>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Kod</th>
+                                            <th>Kampanya</th>
+                                            <th>Tutar</th>
+                                            <th>Son Tarih</th>
+                                            <th>Durum</th>
+                                            <th>Kullanım Tarihi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="font-monospace fw-bold">KUP-9821</td>
+                                            <td>Yaz Kampanyası</td>
+                                            <td>100 TL</td>
+                                            <td>2026-12-31</td>
+                                            <td><span class="badge bg-success">Aktif</span></td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-monospace fw-bold">KUP-1122</td>
+                                            <td>Kış İndirimi</td>
+                                            <td>50 TL</td>
+                                            <td>2026-06-01</td>
+                                            <td><span class="badge bg-secondary">Kullanıldı</span></td>
+                                            <td>2026-02-10 14:30</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="payment" class="content-section d-none">
+                    <h3 class="fw-bold mb-4">Kredi Yükle</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card p-4 mb-3 border-primary">
+                                <h5 class="fw-bold">1.000 Kredi</h5>
+                                <h2 class="text-primary">99 TL</h2>
+                                <button class="btn btn-primary w-100 mt-3">Satın Al</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card p-4 mb-3">
+                                <h5 class="fw-bold">5.000 Kredi</h5>
+                                <h2 class="text-primary">399 TL</h2>
+                                <button class="btn btn-outline-primary w-100 mt-3">Satın Al</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sidebar Toggle
+        window.addEventListener('DOMContentLoaded', event => {
+            const sidebarToggle = document.body.querySelector('#sidebarToggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                });
+            }
+        });
+
+        // Basit SPA (Tek Sayfa) Mantığı ile Bölüm Değiştirme
+        function showSection(sectionId) {
+            // Tüm bölümleri gizle
+            document.querySelectorAll('.content-section').forEach(el => el.classList.add('d-none'));
+            // Seçileni göster
+            document.getElementById(sectionId).classList.remove('d-none');
+            // Menü aktifliğini güncelle
+            document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
+            // Tıklanan menüye active class ekle (Basit implementasyon)
+            event.currentTarget.classList.add('active');
+        }
+
+        // Demo Chart.js
+        const ctx = document.getElementById('myChart');
+        if(ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1 Şubat', '3 Şubat', '5 Şubat', '7 Şubat', '9 Şubat', '11 Şubat'],
+                    datasets: [{
+                        label: 'Kullanılan Kuponlar',
+                        data: [12, 19, 3, 5, 2, 30],
+                        borderColor: '#4f46e5',
+                        tension: 0.1
+                    }]
+                }
+            });
+        }
+    </script>
+</body>
+</html>
