@@ -1,4 +1,94 @@
-<% page_title="1001Kupon | Premium Dark Mode Kupon Yonetimi" %><!--#include file="inc/layout_public_top.inc"-->
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1001Kupon | Premium Dark Mode Kupon Yönetimi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d33f2",
+                        "accent-start": "#3b82f6",
+                        "accent-end": "#a855f7",
+                        "dark-bg": "#0F172A",
+                        "dark-card": "#1E293B",
+                        "dark-border": "rgba(255,255,255,0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0F172A;
+            color: #f8fafc;
+        }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-glow {
+            background: radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.15), transparent 70%),
+                        radial-gradient(circle at 0% 100%, rgba(168, 85, 247, 0.1), transparent 50%);
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        .gradient-button:hover {
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+            transform: translateY(-1px);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .neon-border-hover:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+        .code-block {
+            background: #020617;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="font-display selection:bg-accent-start selection:text-white">
+<nav class="sticky top-0 z-50 w-full bg-dark-bg/80 backdrop-blur-md border-b border-white/5">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2 group cursor-pointer">
+<div class="bg-gradient-to-tr from-accent-start to-accent-end p-2 rounded-lg text-white">
+<span class="material-symbols-outlined block">confirmation_number</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white">1001Kupon</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold text-slate-400 hover:text-white transition-colors" href="#">Özellikler</a>
+<a class="text-sm font-semibold text-slate-400 hover:text-white transition-colors" href="#">Sektörler</a>
+<a class="text-sm font-semibold text-slate-400 hover:text-white transition-colors" href="#">Entegrasyonlar</a>
+<a class="text-sm font-semibold text-slate-400 hover:text-white transition-colors" href="#">Fiyatlandırma</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden sm:block text-sm font-bold text-slate-400 hover:text-white" href="#">Giriş Yap</a>
+<button class="gradient-button text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all">
+                Hemen Başla
+            </button>
+</div>
+</div>
+</nav>
 <section class="relative overflow-hidden pt-16 pb-24 hero-glow">
 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
 <div class="flex flex-col gap-8">
@@ -16,14 +106,14 @@
                 E-ticaret ve perakende markaları için uçtan uca güvenli, ölçeklenebilir ve yüksek performanslı kupon yönetim platformu. Kasada kod öldürme işlemlerini gerçek zamanlı yönetin.
             </p>
 <div class="flex flex-col sm:flex-row gap-4">
-<a href="<%=ROOT_PATH%>/uye-ol.asp" class="gradient-button text-white px-8 py-4 rounded-xl text-lg font-bold transition-all flex items-center justify-center gap-2 group">
+<button class="gradient-button text-white px-8 py-4 rounded-xl text-lg font-bold transition-all flex items-center justify-center gap-2 group">
                     Ücretsiz Deneyin
                     <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-<a href="<%=ROOT_PATH%>/hakkimizda.asp" class="bg-slate-800/50 border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all flex items-center justify-center gap-2">
+</button>
+<button class="bg-slate-800/50 border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all flex items-center justify-center gap-2">
 <span class="material-symbols-outlined">play_circle</span>
                     Demoyu İzle
-                </a>
+                </button>
 </div>
 <div class="flex items-center gap-6 pt-4">
 <div class="flex -space-x-3">
@@ -85,7 +175,7 @@
 </div>
 </div>
 </section>
-<section class="py-24 bg-dark-bg" id="ozellikler">
+<section class="py-24 bg-dark-bg">
 <div class="max-w-7xl mx-auto px-6">
 <div class="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-4">
 <h2 class="text-accent-start font-bold tracking-widest uppercase text-sm">ÖZELLİKLER</h2>
@@ -117,7 +207,7 @@
 </div>
 </div>
 </section>
-<section class="py-24 bg-dark-bg border-y border-white/5" id="sektorler">
+<section class="py-24 bg-dark-bg border-y border-white/5">
 <div class="max-w-7xl mx-auto px-6">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
 <div class="max-w-2xl">
@@ -160,7 +250,7 @@
 </div>
 </div>
 </section>
-<section class="py-24 bg-dark-bg" id="fiyat">
+<section class="py-24 bg-dark-bg">
 <div class="max-w-7xl mx-auto px-6">
 <div class="text-center mb-16">
 <h3 class="text-4xl font-black text-white tracking-tight mb-4">Şeffaf Fiyatlandırma</h3>
@@ -187,9 +277,9 @@
                         Topluluk Desteği
                     </li>
 </ul>
-<a href="<%=ROOT_PATH%>/uye-ol.asp" class="w-full py-3 bg-slate-800 text-white font-bold rounded-xl border border-white/10 hover:border-accent-start transition-all block text-center">
+<button class="w-full py-3 bg-slate-800 text-white font-bold rounded-xl border border-white/10 hover:border-accent-start transition-all">
                     Ücretsiz Başla
-                </a>
+                </button>
 </div>
 <div class="relative flex flex-col p-8 bg-slate-800/50 rounded-2xl border-2 border-accent-start shadow-[0_0_30px_rgba(59,130,246,0.2)] scale-105 z-10 backdrop-blur-sm">
 <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-accent-start to-accent-end text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
@@ -218,9 +308,9 @@
                         7/24 Öncelikli Destek
                     </li>
 </ul>
-<a href="<%=ROOT_PATH%>/uye-ol.asp" class="w-full py-4 gradient-button text-white font-bold rounded-xl transition-all block text-center">
+<button class="w-full py-4 gradient-button text-white font-bold rounded-xl transition-all">
                     Hemen Başla
-                </a>
+                </button>
 </div>
 <div class="flex flex-col p-8 bg-dark-card rounded-2xl border border-white/5 hover:border-white/20 transition-all">
 <h4 class="text-xl font-bold text-white mb-2">Kurumsal</h4>
@@ -245,9 +335,9 @@
                         Özel Hesap Yöneticisi
                     </li>
 </ul>
-<a href="<%=ROOT_PATH%>/basvuru.asp" class="w-full py-3 bg-slate-800 text-white font-bold rounded-xl border border-white/10 hover:border-accent-start transition-all block text-center">
+<button class="w-full py-3 bg-slate-800 text-white font-bold rounded-xl border border-white/10 hover:border-accent-start transition-all">
                     Bizimle İletişime Geçin
-                </a>
+                </button>
 </div>
 </div>
 </div>
@@ -373,4 +463,66 @@
 </div>
 </div>
 </section>
-<!--#include file="inc/layout_public_bottom.inc"-->
+<footer class="bg-slate-950 border-t border-white/5 pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
+<div class="col-span-2 space-y-6">
+<div class="flex items-center gap-2">
+<div class="bg-gradient-to-tr from-accent-start to-accent-end p-2 rounded-lg text-white">
+<span class="material-symbols-outlined block">confirmation_number</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white">1001Kupon</span>
+</div>
+<p class="text-slate-500 max-w-xs leading-relaxed">
+                    Dünyanın en güvenilir ve hızlı kupon yönetim platformu. Geleceğin sadakat programlarını bugünden inşa edin.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:border-accent-start hover:text-accent-start transition-all" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:border-accent-start hover:text-accent-start transition-all" href="#">
+<span class="material-symbols-outlined text-xl">public</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:border-accent-start hover:text-accent-start transition-all" href="#">
+<span class="material-symbols-outlined text-xl">alternate_email</span>
+</a>
+</div>
+</div>
+<div>
+<h6 class="font-bold text-white mb-6 uppercase text-xs tracking-widest">Ürün</h6>
+<ul class="space-y-4 text-sm text-slate-500 font-medium">
+<li><a class="hover:text-accent-start" href="#">Özellikler</a></li>
+<li><a class="hover:text-accent-start" href="#">API Dokümanı</a></li>
+<li><a class="hover:text-accent-start" href="#">Fiyatlandırma</a></li>
+<li><a class="hover:text-accent-start" href="#">Versiyon Geçmişi</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-white mb-6 uppercase text-xs tracking-widest">Şirket</h6>
+<ul class="space-y-4 text-sm text-slate-500 font-medium">
+<li><a class="hover:text-accent-start" href="#">Hakkımızda</a></li>
+<li><a class="hover:text-accent-start" href="#">Kariyer</a></li>
+<li><a class="hover:text-accent-start" href="#">Blog</a></li>
+<li><a class="hover:text-accent-start" href="#">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-white mb-6 uppercase text-xs tracking-widest">Yasal</h6>
+<ul class="space-y-4 text-sm text-slate-500 font-medium">
+<li><a class="hover:text-accent-start" href="#">KVKK</a></li>
+<li><a class="hover:text-accent-start" href="#">Kullanım Koşulları</a></li>
+<li><a class="hover:text-accent-start" href="#">Çerez Politikası</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs font-semibold">
+<p>© 2024 1001Kupon. Tüm hakları saklıdır.</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+                Tüm Sistemler Çalışıyor
+            </div>
+</div>
+</div>
+</footer>
+
+</body></html>

@@ -15,6 +15,7 @@ Set cmd.ActiveConnection=conn: cmd.CommandType=4: cmd.CommandText="dbo.sp_kupon_
 cmd.Parameters.Append cmd.CreateParameter("@firma_id",3,1,,CLng(Session("firma_id")))
 cmd.Parameters.Append cmd.CreateParameter("@kullanici_id",3,1,,CLng(Session("kullanici_id")))
 cmd.Parameters.Append cmd.CreateParameter("@tanim_adi",200,1,200,Trim(Request.Form("tanim_adi")))
+cmd.Parameters.Append cmd.CreateParameter("@aciklama",200,1,500,Trim(Request.Form("aciklama")))
 cmd.Parameters.Append cmd.CreateParameter("@indirim_tipi",3,1,,CLng(Request.Form("indirim_tipi")))
 cmd.Parameters.Append cmd.CreateParameter("@indirim_degeri",5,1,,CDbl(Request.Form("indirim_degeri")))
 cmd.Parameters.Append cmd.CreateParameter("@sepet_limit",5,1,,CDbl(Request.Form("sepet_limit")))
